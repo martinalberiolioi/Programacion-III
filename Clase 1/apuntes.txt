@@ -1,0 +1,14 @@
+php version 5.6.28
+instalar xampp y algun editor de codigo (sublime, visual studio code, bloc de notas, etc)
+
+c, xampp, htdocs, (carpeta)progiii
+
+-en php, el codigo se inicia con <?php y se cierra con ?>
+- <br> ó </br> hace un salto de linea como \n
+
+-se concatena cadenas con . (punto)
+	
+	ejemplo: $nombre.",".$apellido
+	
+
+

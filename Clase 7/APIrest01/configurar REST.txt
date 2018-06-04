@@ -1,0 +1,98 @@
+1- instalar composer
+2- crear un archivo llamado "composer" con extension .JSON, y adentro escribir:
+
+
+
+    {
+        "require":
+        {
+            "slim/slim": "3.*"
+        }
+    }
+
+
+
+3- navego con el cmd a la carpeta donde estoy parado (c:\xampp\htdocs\loQueSea)
+    3.1-tambien puedo usar la terminal integrada del visual
+4- ejecutar comando "composer install"
+5- en la misma carpeta que composer.json, crear un index.php a la misma altura que el composer.json
+6- pegar la configuracion del slim, que es
+
+
+
+    use \Psr\Http\Message\ServerRequestInterface as Request;
+    use \Psr\Http\Message\ResponseInterface as Response;
+
+    require_once './vendor/autoload.php';
+
+    $config['displayErrorDetails'] = true;
+    $config['addContentLengthHeader'] = false;
+
+    /*
+    �La primera l�nea es la m�s importante! A su vez en el modo de 
+    desarrollo para obtener informaci�n sobre los errores
+    (sin �l, Slim por lo menos registrar los errores por lo que si est� utilizando
+    el construido en PHP webserver, entonces usted ver� en la salida de la consola 
+    que es �til).
+
+    La segunda l�nea permite al servidor web establecer el encabezado Content-Length, 
+    lo que hace que Slim se comporte de manera m�s predecible.
+    */
+
+    //*********************************************************************************************//
+    //INICIALIZO EL APIREST
+    //*********************************************************************************************//
+    $app = new \Slim\App(["settings" => $config]);
+
+
+
+7- pego los verbos
+
+
+
+    $app->get('[/]', function (Request $request, Response $response) {    
+        $response->getBody()->write("GET => Bienvenido!!! a SlimFramework");
+        return $response;
+
+    });
+
+    $app->post('[/]', function (Request $request, Response $response) {   
+        $response->getBody()->write("POST => Bienvenido!!! a SlimFramework");
+        return $response;
+
+    });
+
+    $app->put('[/]', function (Request $request, Response $response) {   
+        $response->getBody()->write("PUT => Bienvenido!!! a SlimFramework");
+        return $response;
+    
+    });
+
+    $app->delete('[/]', function (Request $request, Response $response) {   
+        $response->getBody()->write("DELETE => Bienvenido!!! a SlimFramework");
+        return $response;
+    
+    });
+
+
+8- agregar $app->run(); para ejecutar desde postman y probar
+
+9- a la hora de usar Ruteo, para evitar tener que poner:
+
+    http://localhost:8080/apirest01/index.php/parametros/5
+
+9.1- y poder poner:
+
+    http://localhost:8080/apirest01/parametros/5
+
+
+9.2- hay que hacer un archivo ".htaccess". Esta es la extension, el archivo se hace sin nombre. Debe estar a la misma altura que el index.php
+9.3- poner la siguiente configuracion adentro
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule . index.php [L]
+
+
+9.4- es MUY importante no dejar ningun salto de linea al principio ni el final del .htaccess

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 – Formulario Login</title>
+    <script src="./javascript/funciones.js"></script>
+</head>
+<body>
+    <h2 style="position:absolute;left:33%">Login</h2>
+    <form method="POST" action="./php/verificarUsuario.php" onsubmit="return AdministrarValidacionesLogin()">
+        <table align="center">
+            <tr>
+                <td>
+                    <br><br>
+                    <h4 align="center">Ingreso de credenciales</h4>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <hr width="210%">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    DNI: 
+                </td>
+                <td>
+                    <input type="number" id="txtDni" name="txtDni" min="1000000" max="55000000">
+                    <span style="display:none">*</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Apellido:
+                </td>
+                <td>
+                    <input type="text" id="txtApellido" name="txtApellido">
+                    <span style="display:none">*</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <hr width="210%">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <td>
+                        <input style="float:right" type="reset" id="btnLimpiar" name="btnLimpiar" value="Limpiar">
+                    </td>
+                    
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <td>
+                        <input style="float:right" type="submit" id="btnEnviar" name="btnEnviar" value="Enviar">
+                    </td>                    
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
