@@ -1,5 +1,0 @@
-Hola,
-
-este es un simple test de practica para comandos git
-
-Adios
